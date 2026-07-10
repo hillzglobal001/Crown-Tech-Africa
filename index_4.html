@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crown Tech Africa — Growth Diagnosis for African Businesses</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230e0f1a'/%3E%3Cpath fill='%23c89b3c' d='M6 24 L9 11 L13 17 L16 7 L19 17 L23 11 L26 24 Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #12131f;
+    --ink-2: #1a1c2c;
+    --ink-3: #23253a;
+    --parchment: #efe9dc;
+    --parchment-dim: #cfc9bb;
+    --gold: #c89b3c;
+    --gold-soft: #e3c477;
+    --indigo: #454ab0;
+    --ember: #c56a3f;
+    --line: #34364c;
+    --sage: #8b93a0;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--ink);
+    color:var(--parchment);
+    font-family:'Inter', sans-serif;
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    line-height:1.05;
+  }
+
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+  }
+
+  a{color:inherit; text-decoration:none;}
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(18,19,31,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 0;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.05rem;
+    letter-spacing:0.01em;
+  }
+  .brand svg{width:26px; height:26px; flex-shrink:0;}
+  .brand .sub{
+    display:block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.6rem;
+    letter-spacing:0.18em;
+    color:var(--gold-soft);
+    text-transform:uppercase;
+    margin-top:1px;
+  }
+  .nav-links{
+    display:flex; gap:34px; align-items:center;
+  }
+  .nav-links a{
+    font-size:0.87rem; color:var(--parchment-dim);
+    transition:color .2s ease;
+  }
+  .nav-links a:hover{color:var(--gold-soft);}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px;
+    border-radius:3px;
+    font-size:0.85rem;
+    font-weight:600;
+    cursor:pointer;
+    border:1px solid transparent;
+    transition:all .2s ease;
+  }
+  .btn-gold{
+    background:var(--gold);
+    color:var(--ink);
+  }
+  .btn-gold:hover{background:var(--gold-soft); transform:translateY(-1px);}
+  .btn-ghost{
+    border-color:var(--line);
+    color:var(--parchment);
+  }
+  .btn-ghost:hover{border-color:var(--gold-soft); color:var(--gold-soft);}
+  .nav-cta{display:flex;}
+  .burger{display:none; background:none; border:none; cursor:pointer; padding:8px;}
+  .burger span{display:block; width:22px; height:2px; background:var(--parchment); margin:5px 0;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:88px 0 60px;
+    position:relative;
+  }
+  .eyebrow{
+    font-size:0.72rem;
+    color:var(--gold-soft);
+    margin-bottom:20px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:26px; height:1px;
+    background:var(--gold-soft);
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5.4vw, 4.4rem);
+    max-width:14ch;
+    color:var(--parchment);
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--gold-soft);
+  }
+  .hero-sub{
+    max-width:46ch;
+    font-size:1.08rem;
+    color:var(--parchment-dim);
+    margin:26px 0 36px;
+  }
+  .hero-cta{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:64px;}
+
+  /* signature pulse diagnostic */
+  .pulse-panel{
+    border:1px solid var(--line);
+    border-radius:6px;
+    background:linear-gradient(180deg, var(--ink-2), var(--ink));
+    padding:28px 28px 20px;
+  }
+  .pulse-head{
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-bottom:14px;
+    font-size:0.7rem;
+    color:var(--sage);
+  }
+  .pulse-svg{width:100%; height:auto; display:block;}
+  .pulse-line{
+    fill:none;
+    stroke:var(--gold);
+    stroke-width:2;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-dasharray:1400;
+    stroke-dashoffset:1400;
+    animation:draw 2.4s ease forwards 0.3s;
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  .pulse-dot{ fill:var(--ink); stroke:var(--gold-soft); stroke-width:2; }
+  .pulse-labels{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:10px;
+    margin-top:14px;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+  }
+  .pulse-labels div{font-size:0.65rem; color:var(--sage);}
+  .pulse-labels strong{display:block; color:var(--parchment); font-size:0.78rem; margin-top:4px; font-family:'Inter',sans-serif; text-transform:none; letter-spacing:0;}
+
+  @media (prefers-reduced-motion: reduce){
+    .pulse-line{ animation:none; stroke-dashoffset:0; }
+  }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{padding:96px 0;}
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    flex-wrap:wrap; gap:20px;
+    margin-bottom:56px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:28px;
+  }
+  .section-head h2{
+    font-size:clamp(1.7rem, 3vw, 2.5rem);
+    max-width:16ch;
+  }
+  .section-head p{
+    max-width:34ch;
+    color:var(--sage);
+    font-size:0.92rem;
+  }
+
+  /* ---------- DIAGNOSIS ---------- */
+  .diag-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .diag-card{
+    background:var(--ink);
+    padding:38px 34px;
+    transition:background .25s ease;
+  }
+  .diag-card:hover{background:var(--ink-2);}
+  .diag-tag{
+    font-size:0.66rem;
+    color:var(--ember);
+    margin-bottom:16px;
+  }
+  .diag-card h3{
+    font-size:1.4rem;
+    color:var(--parchment);
+    margin-bottom:12px;
+    font-weight:500;
+  }
+  .diag-card p{
+    color:var(--parchment-dim);
+    font-size:0.94rem;
+    margin-bottom:18px;
+  }
+  .diag-fix{
+    display:flex; gap:10px; align-items:flex-start;
+    font-size:0.86rem;
+    color:var(--gold-soft);
+    border-top:1px solid var(--line);
+    padding-top:16px;
+  }
+  .diag-fix svg{flex-shrink:0; margin-top:2px; width:14px; height:14px;}
+
+  /* ---------- APPROACH ---------- */
+  .approach-list{display:flex; flex-direction:column;}
+  .approach-item{
+    display:grid;
+    grid-template-columns:100px 1fr;
+    gap:30px;
+    padding:36px 0;
+    border-top:1px solid var(--line);
+  }
+  .approach-item:last-child{border-bottom:1px solid var(--line);}
+  .approach-num{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:2.6rem;
+    color:var(--indigo);
+  }
+  .approach-item h3{
+    font-size:1.3rem;
+    color:var(--parchment);
+    margin-bottom:10px;
+    font-weight:500;
+  }
+  .approach-item p{
+    color:var(--parchment-dim);
+    max-width:56ch;
+    font-size:0.96rem;
+  }
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .service-card{
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:30px 26px;
+    background:var(--ink-2);
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .service-card:hover{
+    border-color:var(--gold);
+    transform:translateY(-3px);
+  }
+  .service-card svg{width:26px; height:26px; color:var(--gold-soft); margin-bottom:20px;}
+  .service-card h3{
+    font-size:1.05rem;
+    font-weight:600;
+    font-family:'Inter', sans-serif;
+    color:var(--parchment);
+    margin-bottom:10px;
+  }
+  .service-card p{
+    font-size:0.87rem;
+    color:var(--sage);
+  }
+
+  /* ---------- CTA / CONTACT ---------- */
+  .contact{
+    background:var(--ink-2);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+  }
+  .contact h2{
+    font-size:clamp(1.8rem, 3.4vw, 2.7rem);
+    margin-bottom:20px;
+  }
+  .contact p{color:var(--parchment-dim); max-width:42ch; font-size:0.98rem; margin-bottom:10px;}
+  .form-panel{
+    background:var(--ink);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:34px;
+  }
+  .field{margin-bottom:18px;}
+  .field label{
+    display:block;
+    font-size:0.68rem;
+    color:var(--sage);
+    margin-bottom:8px;
+  }
+  .field input, .field select{
+    width:100%;
+    background:var(--ink-3);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:12px 14px;
+    color:var(--parchment);
+    font-family:'Inter', sans-serif;
+    font-size:0.92rem;
+  }
+  .field input:focus, .field select:focus{
+    outline:2px solid var(--gold-soft);
+    outline-offset:1px;
+    border-color:var(--gold-soft);
+  }
+  .form-panel .btn{width:100%; justify-content:center; margin-top:6px;}
+  .form-note{font-size:0.72rem; color:var(--sage); margin-top:14px; text-align:center;}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:56px 0 40px;}
+  .footer-top{
+    display:flex; justify-content:space-between; align-items:flex-start;
+    flex-wrap:wrap; gap:30px;
+    padding-bottom:36px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:26px;
+  }
+  .footer-brand p{color:var(--sage); font-size:0.85rem; max-width:32ch; margin-top:12px;}
+  .footer-links{display:flex; gap:50px; flex-wrap:wrap;}
+  .footer-col h4{font-size:0.68rem; color:var(--sage); margin-bottom:14px;}
+  .footer-col a{display:block; font-size:0.86rem; color:var(--parchment-dim); margin-bottom:10px;}
+  .footer-col a:hover{color:var(--gold-soft);}
+  .footer-bottom{display:flex; justify-content:space-between; font-size:0.75rem; color:var(--sage); flex-wrap:wrap; gap:10px;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px){
+    .nav-links, .nav-cta{display:none;}
+    .burger{display:block;}
+    .diag-grid{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:1fr 1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .pulse-labels{grid-template-columns:repeat(2,1fr); row-gap:14px;}
+    .approach-item{grid-template-columns:1fr; gap:8px;}
+  }
+  @media (max-width: 560px){
+    .wrap{padding:0 20px;}
+    .services-grid{grid-template-columns:1fr;}
+    section{padding:64px 0;}
+    .hero{padding-top:48px;}
+  }
+
+  :focus-visible{outline:2px solid var(--gold-soft); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="brand">
+        <svg viewBox="0 0 24 24" fill="#c89b3c" stroke="none"><path d="M4 18 L7 8 L10 13 L12 5 L14 13 L17 8 L20 18 Z"/></svg>
+        <span>CROWN TECH AFRICA<span class="sub">Built on Strategy. Crowned by Results.</span></span>
+      </div>
+      <div class="nav-links">
+        <a href="#diagnosis">The Problem</a>
+        <a href="#approach">Approach</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-cta">
+        <a href="#contact" class="btn btn-gold">Book a Consultation</a>
+      </div>
+      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow mono">Growth Diagnosis &amp; Delivery</div>
+    <h1>Your business isn't broken.<br>It's <em>unseen</em>.</h1>
+    <p class="hero-sub">Good products stall in Africa's markets for reasons that are rarely about the product — visibility, positioning, or systems that never scaled past the founder. We find the exact leak point and fix it, using AI to move at a speed traditional agencies can't match.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-gold">Get Your Growth Diagnosis</a>
+      <a href="#approach" class="btn btn-ghost">See How It Works</a>
+    </div>
+
+    <div class="pulse-panel">
+      <div class="pulse-head mono">
+        <span>Business Signal Readout</span>
+        <span>Live Diagnostic</span>
+      </div>
+      <svg class="pulse-svg" viewBox="0 0 1000 160" preserveAspectRatio="none">
+        <line x1="0" y1="80" x2="1000" y2="80" stroke="#2a2c40" stroke-width="1"/>
+        <path class="pulse-line" d="M0,80 L120,80 L150,30 L180,130 L210,80 L340,80 L370,50 L400,110 L430,80 L560,80 L590,20 L620,140 L650,80 L780,80 L810,60 L840,100 L870,80 L1000,80"/>
+        <circle class="pulse-dot" cx="180" cy="130" r="5"/>
+        <circle class="pulse-dot" cx="400" cy="110" r="5"/>
+        <circle class="pulse-dot" cx="620" cy="140" r="5"/>
+        <circle class="pulse-dot" cx="840" cy="100" r="5"/>
+      </svg>
+      <div class="pulse-labels mono">
+        <div>01 · Visibility<strong>Nobody's finding you</strong></div>
+        <div>02 · Growth<strong>Stuck on a plateau</strong></div>
+        <div>03 · Sales<strong>Sudden, unexplained drop</strong></div>
+        <div>04 · Scale<strong>Can't grow past yourself</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="diagnosis">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Four questions we hear<br>from founders every week</h2>
+      <p>If any of these sound familiar, the problem has a name — and a fix.</p>
+    </div>
+    <div class="diag-grid">
+      <div class="diag-card">
+        <div class="diag-tag mono">Visibility</div>
+        <h3>Why is your business not growing?</h3>
+        <p>Your audience exists. They're just never shown you — the wrong channels, weak targeting, or a brand that doesn't hold attention long enough to convert.</p>
+        <div class="diag-fix">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg>
+          We rebuild the channels and targeting so the right people see you first.
+        </div>
+      </div>
+      <div class="diag-card">
+        <div class="diag-tag mono">Growth</div>
+        <h3>Why aren't you getting visibility?</h3>
+        <p>Posting isn't a strategy. Most businesses are active online without ever being positioned — no clear story, no consistent presence where buyers actually decide.</p>
+        <div class="diag-fix">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg>
+          We build a brand and content system that compounds instead of resetting weekly.
+        </div>
+      </div>
+      <div class="diag-card">
+        <div class="diag-tag mono">Sales</div>
+        <h3>Why has sales suddenly dropped?</h3>
+        <p>Sudden drops are rarely sudden — they're a slow leak that finally surfaced: a broken funnel step, a shifted market, or spend that stopped earning its keep.</p>
+        <div class="diag-fix">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg>
+          We audit the funnel end-to-end and patch the exact point of loss.
+        </div>
+      </div>
+      <div class="diag-card">
+        <div class="diag-tag mono">Scale</div>
+        <h3>How do you scale?</h3>
+        <p>What got you to your first milestone won't get you past it. Scaling needs systems, reporting, and marketing that run without you personally driving every sale.</p>
+        <div class="diag-fix">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg>
+          We put growth infrastructure in place that outlasts any one campaign.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="approach">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>How we work</h2>
+      <p>Three stages, in order — every engagement moves through all three.</p>
+    </div>
+    <div class="approach-list">
+      <div class="approach-item">
+        <div class="approach-num">01</div>
+        <div>
+          <h3>Diagnose</h3>
+          <p>We audit your brand, ads, website, and socials together — using AI-assisted analysis to find the exact point where prospects are dropping off, rather than guessing which channel to fix.</p>
+        </div>
+      </div>
+      <div class="approach-item">
+        <div class="approach-num">02</div>
+        <div>
+          <h3>Deploy</h3>
+          <p>We build and launch the fix — ads, website, content, brand system — at a pace manual agencies can't match, because AI handles the production work while our strategists handle judgment.</p>
+        </div>
+      </div>
+      <div class="approach-item">
+        <div class="approach-num">03</div>
+        <div>
+          <h3>Scale</h3>
+          <p>We put reporting and repeatable systems in place so growth keeps compounding after launch — and doesn't require you to personally run it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>What we deliver</h2>
+      <p>Pick one problem to solve, or hand us the whole growth stack.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>
+        <h3>Ads</h3>
+        <p>Targeted campaigns built on real audience data, not guesswork — tuned weekly, not left to run cold.</p>
+      </div>
+      <div class="service-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M8 4v5"/></svg>
+        <h3>Websites</h3>
+        <p>Fast, mobile-first sites built to convert visits into calls, orders, and bookings — not just to look good.</p>
+      </div>
+      <div class="service-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="10" r="1.4"/><path d="M8 16c1-2 3-2 4-2s3 0 4 2"/></svg>
+        <h3>Social Media Management</h3>
+        <p>Consistent posting, tuned to what your specific audience responds to — planned monthly, not improvised daily.</p>
+      </div>
+      <div class="service-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
+        <h3>Sales &amp; Marketing</h3>
+        <p>Funnels and follow-up systems that turn interest into paid customers, and track exactly where deals are lost.</p>
+      </div>
+      <div class="service-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l2.4 5.3L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.6-.7z"/></svg>
+        <h3>Creative Brand Strategy</h3>
+        <p>A visual identity and message that make you instantly recognizable — and easy to say yes to.</p>
+      </div>
+      <div class="service-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+        <h3>Growth Reporting</h3>
+        <p>Clear, plain-language reporting on what's working — so decisions are made on numbers, not vibes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <div class="eyebrow mono">Start Here</div>
+        <h2>Book your free<br>growth consultation</h2>
+        <p>Tell us the problem that's costing you the most right now. We'll come back with a straight answer on what's fixable, what it takes, and what it costs — no generic pitch deck.</p>
+        <p>Prefer to talk directly? Reach us on WhatsApp or email below.</p>
+      </div>
+      <div class="form-panel">
+        <form id="consultForm">
+          <div class="field">
+            <label for="name" class="mono">Your Name</label>
+            <input id="name" type="text" placeholder="e.g. Amara Obi" required>
+          </div>
+          <div class="field">
+            <label for="business" class="mono">Business Name</label>
+            <input id="business" type="text" placeholder="e.g. Obi Foods Ltd" required>
+          </div>
+          <div class="field">
+            <label for="problem" class="mono">Biggest Problem Right Now</label>
+            <select id="problem" required>
+              <option value="">Select one</option>
+              <option>Visibility — nobody's finding us</option>
+              <option>Growth — stuck on a plateau</option>
+              <option>Sales — sudden drop</option>
+              <option>Scale — can't grow past ourselves</option>
+              <option>Not sure — need a full diagnosis</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="contact-info" class="mono">Email or WhatsApp</label>
+            <input id="contact-info" type="text" placeholder="e.g. amara@obifoods.com" required>
+          </div>
+          <button type="submit" class="btn btn-gold">Request My Diagnosis</button>
+        </form>
+        <p class="form-note">We reply within one business day. No spam, no auto-added mailing lists.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand">
+          <svg viewBox="0 0 24 24" fill="#c89b3c" stroke="none"><path d="M4 18 L7 8 L10 13 L12 5 L14 13 L17 8 L20 18 Z"/></svg>
+          <span>CROWN TECH AFRICA</span>
+        </div>
+        <p>Growth diagnosis and delivery for African businesses ready to scale past where they are now.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4 class="mono">Company</h4>
+          <a href="#diagnosis">The Problem</a>
+          <a href="#approach">Approach</a>
+          <a href="#services">Services</a>
+        </div>
+        <div class="footer-col">
+          <h4 class="mono">Contact</h4>
+          <a href="mailto:hello@crowntechafrica.com">hello@crowntechafrica.com</a>
+          <a href="#contact">Book a Consultation</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Crown Tech Africa. All rights reserved.</span>
+      <span>Built for founders, not for algorithms.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const burger = document.querySelector('.burger');
+  const navLinks = document.querySelector('.nav-links');
+  const navCta = document.querySelector('.nav-cta');
+  burger.addEventListener('click', () => {
+    const open = navLinks.style.display === 'flex';
+    navLinks.style.display = open ? 'none' : 'flex';
+    navCta.style.display = open ? 'none' : 'flex';
+    navLinks.style.flexDirection = 'column';
+    navLinks.style.position = 'absolute';
+    navLinks.style.top = '64px';
+    navLinks.style.left = '0';
+    navLinks.style.right = '0';
+    navLinks.style.background = '#12131f';
+    navLinks.style.padding = '20px 32px';
+    navLinks.style.borderBottom = '1px solid #34364c';
+    navCta.style.position = 'absolute';
+    navCta.style.top = navLinks.style.display === 'flex' ? '210px' : '0';
+    navCta.style.left = '32px';
+  });
+
+  // Contact form — placeholder handler (no backend wired up yet)
+  document.getElementById('consultForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const business = document.getElementById('business').value;
+    const problem = document.getElementById('problem').value;
+    const contactInfo = document.getElementById('contact-info').value;
+    const subject = encodeURIComponent('Growth Consultation Request — ' + business);
+    const body = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Business: ' + business + '\n' +
+      'Biggest problem: ' + problem + '\n' +
+      'Contact: ' + contactInfo
+    );
+    window.location.href = 'mailto:hello@crowntechafrica.com?subject=' + subject + '&body=' + body;
+  });
+</script>
+
+</body>
+</html>
