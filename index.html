@@ -305,6 +305,59 @@
     font-size:0.96rem;
   }
 
+  /* ---------- ABOUT ---------- */
+  .about-intro{
+    max-width:72ch;
+    color:var(--parchment-dim);
+    font-size:1.02rem;
+    line-height:1.75;
+    margin-bottom:20px;
+  }
+  .about-intro strong{color:var(--parchment); font-weight:600;}
+  .pillar-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+    margin:56px 0;
+  }
+  .pillar-card{
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:32px 28px;
+    background:var(--ink-2);
+  }
+  .pillar-card .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.65rem;
+    letter-spacing:0.18em;
+    color:var(--gold-soft);
+    text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .pillar-card p{
+    font-family:'Fraunces', serif;
+    font-size:1.15rem;
+    font-weight:500;
+    color:var(--parchment);
+    line-height:1.4;
+  }
+  .belief-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .belief-item{
+    background:var(--ink);
+    padding:24px 28px;
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+  }
+  .belief-item svg{width:16px; height:16px; color:var(--gold); flex-shrink:0; margin-top:4px;}
+  .belief-item p{color:var(--parchment-dim); font-size:0.94rem; line-height:1.5;}
+
   /* ---------- SERVICES ---------- */
   .services-grid{
     display:grid;
@@ -416,6 +469,8 @@
     .nav-links, .nav-cta{display:none;}
     .burger{display:block;}
     .diag-grid{grid-template-columns:1fr;}
+    .pillar-grid{grid-template-columns:1fr;}
+    .belief-grid{grid-template-columns:1fr;}
     .services-grid{grid-template-columns:1fr 1fr;}
     .contact-grid{grid-template-columns:1fr;}
     .pulse-labels{grid-template-columns:repeat(2,1fr); row-gap:14px;}
@@ -465,6 +520,7 @@
       <div class="nav-links">
         <a href="#diagnosis">The Problem</a>
         <a href="#approach">Approach</a>
+        <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#contact">Contact</a>
       </div>
@@ -591,6 +647,69 @@
   </div>
 </section>
 
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>About Crown Tech Africa</h2>
+      <p>Why we exist, and what we actually believe.</p>
+    </div>
+
+    <p class="about-intro">At Crown Tech Africa, we believe businesses don't struggle because they lack potential — they struggle because growth is often limited by <strong>poor visibility, ineffective strategies, disconnected systems, and missed opportunities.</strong> We exist to identify those challenges and turn them into measurable business growth.</p>
+
+    <p class="about-intro">Using intelligent strategy, branding, digital marketing, websites, AI-powered solutions, and practical execution, we help African businesses attract the right customers, improve their sales processes, strengthen their market presence, and build systems that scale.</p>
+
+    <p class="about-intro">We don't believe in offering services for the sake of it. Every strategy we recommend, every website we build, every campaign we launch, and every system we implement is designed with one purpose: <strong>to deliver measurable growth.</strong></p>
+
+    <p class="about-intro">At Crown Tech Africa, we don't just work for businesses — we become growth partners committed to helping them build stronger, smarter, and more profitable companies.</p>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="tag">Mission</div>
+        <p>To crown the efforts of African businesses with measurable growth through intelligent strategy and practical solutions.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="tag">Vision</div>
+        <p>To become Africa's most trusted growth consultancy — empowering businesses with innovative strategies, technology, and intelligent systems that create lasting impact across the continent.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="tag">Our Promise</div>
+        <p>We don't measure success by the number of websites we launch or campaigns we run. We measure success by the growth our clients achieve.</p>
+      </div>
+    </div>
+
+    <div class="section-head" style="border-top:none; padding-top:0;">
+      <h2>We Believe</h2>
+      <p>The philosophy behind how we work.</p>
+    </div>
+    <div class="belief-grid">
+      <div class="belief-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg>
+        <p>Businesses deserve strategies that produce results — not just reports.</p>
+      </div>
+      <div class="belief-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg>
+        <p>Visibility without conversion is wasted attention.</p>
+      </div>
+      <div class="belief-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg>
+        <p>Growth should be measurable.</p>
+      </div>
+      <div class="belief-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg>
+        <p>Technology should simplify business, not complicate it.</p>
+      </div>
+      <div class="belief-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg>
+        <p>AI should empower people, not replace them.</p>
+      </div>
+      <div class="belief-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg>
+        <p>Every business has untapped potential waiting to be unlocked.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="services">
   <div class="wrap">
     <div class="section-head">
@@ -703,6 +822,7 @@
           <h4 class="mono">Company</h4>
           <a href="#diagnosis">The Problem</a>
           <a href="#approach">Approach</a>
+          <a href="#about">About</a>
           <a href="#services">Services</a>
         </div>
         <div class="footer-col">
