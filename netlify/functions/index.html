@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crown Tech Africa — Growth Diagnosis for African Businesses</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230e0f1a'/%3E%3Cpath fill='%23c89b3c' d='M6 24 L9 11 L13 17 L16 7 L19 17 L23 11 L26 24 Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #12131f;
+    --ink-2: #1a1c2c;
+    --ink-3: #23253a;
+    --parchment: #efe9dc;
+    --parchment-dim: #cfc9bb;
+    --gold: #c89b3c;
+    --gold-soft: #e3c477;
+    --indigo: #454ab0;
+    --ember: #c56a3f;
+    --line: #34364c;
+    --sage: #8b93a0;
+    --header-bg: rgba(18,19,31,0.85);
+  }
+
+  body.light-mode{
+    --ink: #faf8f3;
+    --ink-2: #f1ebdd;
+    --ink-3: #ece4d2;
+    --parchment: #1c1d2a;
+    --parchment-dim: #4b4c5c;
+    --gold: #a97a26;
+    --gold-soft: #8f661d;
+    --ember: #a44f28;
+    --line: #e2d9c4;
+    --sage: #6d6e59;
+    --header-bg: rgba(250,248,243,0.88);
+  }
+
+  body{ transition: background .25s ease, color .25s ease; }
+  body *{ transition: background-color .25s ease, border-color .25s ease, color .25s ease; }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--ink);
+    color:var(--parchment);
+    font-family:'Inter', sans-serif;
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    line-height:1.05;
+  }
+
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+  }
+
+  a{color:inherit; text-decoration:none;}
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:var(--header-bg);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 0;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.05rem;
+    letter-spacing:0.01em;
+  }
+  .brand svg{width:26px; height:26px; flex-shrink:0;}
+  .brand .sub{
+    display:block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.6rem;
+    letter-spacing:0.18em;
+    color:var(--gold-soft);
+    text-transform:uppercase;
+    margin-top:1px;
+  }
+  .nav-links{
+    display:flex; gap:34px; align-items:center;
+  }
+  .nav-links a{
+    font-size:0.87rem; color:var(--parchment-dim);
+    transition:color .2s ease;
+  }
+  .nav-links a:hover{color:var(--gold-soft);}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px;
+    border-radius:3px;
+    font-size:0.85rem;
+    font-weight:600;
+    cursor:pointer;
+    border:1px solid transparent;
+    transition:all .2s ease;
+  }
+  .btn-gold{
+    background:var(--gold);
+    color:var(--ink);
+  }
+  .btn-gold:hover{background:var(--gold-soft); transform:translateY(-1px);}
+  .btn-ghost{
+    border-color:var(--line);
+    color:var(--parchment);
+  }
+  .btn-ghost:hover{border-color:var(--gold-soft); color:var(--gold-soft);}
+  .nav-cta{display:flex; align-items:center; gap:14px;}
+  .theme-toggle{
+    display:flex; align-items:center; justify-content:center;
+    width:38px; height:38px;
+    border-radius:50%;
+    border:1px solid var(--line);
+    background:transparent;
+    color:var(--parchment);
+    cursor:pointer;
+    flex-shrink:0;
+  }
+  .theme-toggle:hover{border-color:var(--gold-soft); color:var(--gold-soft);}
+  .theme-toggle svg{width:18px; height:18px;}
+  .burger{display:none; background:none; border:none; cursor:pointer; padding:8px;}
+  .burger span{display:block; width:22px; height:2px; background:var(--parchment); margin:5px 0;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:88px 0 60px;
+    position:relative;
+  }
+  .eyebrow{
+    font-size:0.72rem;
+    color:var(--gold-soft);
+    margin-bottom:20px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:26px; height:1px;
+    background:var(--gold-soft);
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5.4vw, 4.4rem);
+    max-width:14ch;
+    color:var(--parchment);
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--gold-soft);
+  }
+  .hero-sub{
+    max-width:46ch;
+    font-size:1.08rem;
+    color:var(--parchment-dim);
+    margin:26px 0 36px;
+  }
+  .hero-cta{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:64px;}
+
+  /* signature pulse diagnostic */
+  .pulse-panel{
+    border:1px solid var(--line);
+    border-radius:6px;
+    background:linear-gradient(180deg, var(--ink-2), var(--ink));
+    padding:28px 28px 20px;
+  }
+  .pulse-head{
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-bottom:14px;
+    font-size:0.7rem;
+    color:var(--sage);
+  }
+  .pulse-svg{width:100%; height:auto; display:block;}
+  .pulse-line{
+    fill:none;
+    stroke:var(--gold);
+    stroke-width:2;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-dasharray:1400;
+    stroke-dashoffset:1400;
+    animation:draw 2.4s ease forwards 0.3s;
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  .pulse-dot{ fill:var(--ink); stroke:var(--gold-soft); stroke-width:2; }
+  .pulse-labels{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:10px;
+    margin-top:14px;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+  }
+  .pulse-labels div{font-size:0.65rem; color:var(--sage);}
+  .pulse-labels strong{display:block; color:var(--parchment); font-size:0.78rem; margin-top:4px; font-family:'Inter',sans-serif; text-transform:none; letter-spacing:0;}
+
+  @media (prefers-reduced-motion: reduce){
+    .pulse-line{ animation:none; stroke-dashoffset:0; }
+  }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{padding:96px 0;}
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    flex-wrap:wrap; gap:20px;
+    margin-bottom:56px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:28px;
+  }
+  .section-head h2{
+    font-size:clamp(1.7rem, 3vw, 2.5rem);
+    max-width:16ch;
+  }
+  .section-head p{
+    max-width:34ch;
+    color:var(--sage);
+    font-size:0.92rem;
+  }
+
+  /* ---------- DIAGNOSIS ---------- */
+  .diag-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .diag-card{
+    background:var(--ink);
+    padding:38px 34px;
+    transition:background .25s ease;
+  }
+  .diag-card:hover{background:var(--ink-2);}
+  .diag-tag{
+    font-size:0.66rem;
+    color:var(--ember);
+    margin-bottom:16px;
+  }
+  .diag-card h3{
+    font-size:1.4rem;
+    color:var(--parchment);
+    margin-bottom:12px;
+    font-weight:500;
+  }
+  .diag-card p{
+    color:var(--parchment-dim);
+    font-size:0.94rem;
+    margin-bottom:18px;
+  }
+  .diag-fix{
+    display:flex; gap:10px; align-items:flex-start;
+    font-size:0.86rem;
+    color:var(--gold-soft);
+    border-top:1px solid var(--line);
+    padding-top:16px;
+  }
+  .diag-fix svg{flex-shrink:0; margin-top:2px; width:14px; height:14px;}
+
+  /* ---------- APPROACH ---------- */
+  .approach-list{display:flex; flex-direction:column;}
+  .approach-item{
+    display:grid;
+    grid-template-columns:100px 1fr;
+    gap:30px;
+    padding:36px 0;
+    border-top:1px solid var(--line);
+  }
+  .approach-item:last-child{border-bottom:1px solid var(--line);}
+  .approach-num{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:2.6rem;
+    color:var(--indigo);
+  }
+  .approach-item h3{
+    font-size:1.3rem;
+    color:var(--parchment);
+    margin-bottom:10px;
+    font-weight:500;
+  }
+  .approach-item p{
+    color:var(--parchment-dim);
+    max-width:56ch;
+    font-size:0.96rem;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-intro{
+    max-width:72ch;
+    color:var(--parchment-dim);
+    font-size:1.02rem;
+    line-height:1.75;
+    margin-bottom:20px;
+  }
+  .about-intro strong{color:var(--parchment); font-weight:600;}
+  .pillar-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+    margin:56px 0;
+  }
+  .pillar-card{
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:32px 28px;
+    background:var(--ink-2);
+  }
+  .pillar-card .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.65rem;
+    letter-spacing:0.18em;
+    color:var(--gold-soft);
+    text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .pillar-card p{
+    font-family:'Fraunces', serif;
+    font-size:1.15rem;
+    font-weight:500;
+    color:var(--parchment);
+    line-height:1.4;
+  }
+  .belief-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .belief-item{
+    background:var(--ink);
+    padding:24px 28px;
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+  }
+  .belief-item svg{width:16px; height:16px; color:var(--gold); flex-shrink:0; margin-top:4px;}
+  .belief-item p{color:var(--parchment-dim); font-size:0.94rem; line-height:1.5;}
+
+  /* ---------- INDUSTRIES ---------- */
+  .industries-grid{
+    display:grid;
+    grid-template-columns:repeat(6, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .industry-card{
+    background:var(--ink);
+    padding:32px 16px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+    text-align:center;
+    transition:background .2s ease;
+  }
+  .industry-card:hover{background:var(--ink-2);}
+  .industry-card svg{width:26px; height:26px; color:var(--gold-soft);}
+  .industry-card span{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--parchment-dim);
+  }
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .service-card{
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:30px 26px;
+    background:var(--ink-2);
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .service-card:hover{
+    border-color:var(--gold);
+    transform:translateY(-3px);
+  }
+  .service-card svg{width:26px; height:26px; color:var(--gold-soft); margin-bottom:20px;}
+  .service-card h3{
+    font-size:1.05rem;
+    font-weight:600;
+    font-family:'Inter', sans-serif;
+    color:var(--parchment);
+    margin-bottom:10px;
+  }
+  .service-card p{
+    font-size:0.87rem;
+    color:var(--sage);
+  }
+
+  /* ---------- CTA / CONTACT ---------- */
+  .contact{
+    background:var(--ink-2);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+  }
+  .contact h2{
+    font-size:clamp(1.8rem, 3.4vw, 2.7rem);
+    margin-bottom:20px;
+  }
+  .contact p{color:var(--parchment-dim); max-width:42ch; font-size:0.98rem; margin-bottom:10px;}
+  .contact-links{display:flex; flex-direction:column; gap:12px; margin-top:22px;}
+  .contact-link{
+    display:flex; align-items:center; gap:12px;
+    padding:14px 18px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    color:var(--parchment);
+    font-size:0.92rem;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .contact-link:hover{border-color:var(--gold); transform:translateX(3px);}
+  .contact-link svg{width:19px; height:19px; color:var(--gold-soft); flex-shrink:0;}
+  .hours-note{
+    display:flex; align-items:center; gap:10px;
+    margin-top:18px;
+    font-size:0.82rem;
+    color:var(--sage);
+  }
+  .hours-note svg{width:15px; height:15px; flex-shrink:0;}
+
+  /* ---------- NEWSLETTER ---------- */
+  .newsletter{padding:64px 0;}
+  .newsletter-box{
+    background:var(--ink-2);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:44px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:40px;
+    flex-wrap:wrap;
+  }
+  .newsletter-box h2{font-size:1.6rem; color:var(--parchment); margin-bottom:8px;}
+  .newsletter-box p{color:var(--sage); font-size:0.9rem; max-width:38ch;}
+  .newsletter-form{display:flex; gap:10px; flex-wrap:wrap;}
+  .newsletter-form input{
+    background:var(--ink);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:12px 16px;
+    color:var(--parchment);
+    font-family:'Inter', sans-serif;
+    font-size:0.9rem;
+    min-width:240px;
+  }
+  .newsletter-form input:focus{outline:2px solid var(--gold-soft); outline-offset:1px; border-color:var(--gold-soft);}
+  .newsletter-note{font-size:0.78rem; color:var(--sage); margin-top:10px; width:100%;}
+
+  /* ---------- WORKS ---------- */
+  .filter-tabs{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:40px;}
+  .filter-tab{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:9px 18px;
+    border:1px solid var(--line);
+    border-radius:30px;
+    color:var(--sage);
+    background:transparent;
+    cursor:pointer;
+    transition:all .2s ease;
+  }
+  .filter-tab.active, .filter-tab:hover{
+    border-color:var(--gold);
+    color:var(--gold-soft);
+  }
+  .works-empty{
+    border:1px dashed var(--line);
+    border-radius:8px;
+    padding:70px 40px;
+    text-align:center;
+  }
+  .works-empty svg{width:36px; height:36px; color:var(--gold-soft); margin-bottom:20px;}
+  .works-empty h3{font-family:'Fraunces', serif; font-size:1.4rem; color:var(--parchment); margin-bottom:10px; font-weight:500;}
+  .works-empty p{color:var(--sage); font-size:0.92rem; max-width:44ch; margin:0 auto;}
+  .form-panel{
+    background:var(--ink);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:34px;
+  }
+  .field{margin-bottom:18px;}
+  .field label{
+    display:block;
+    font-size:0.68rem;
+    color:var(--sage);
+    margin-bottom:8px;
+  }
+  .field input, .field select, .field textarea{
+    width:100%;
+    background:var(--ink-3);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:12px 14px;
+    color:var(--parchment);
+    font-family:'Inter', sans-serif;
+    font-size:0.92rem;
+  }
+  .field textarea{resize:vertical; min-height:130px; line-height:1.5;}
+  .field input:focus, .field select:focus, .field textarea:focus{
+    outline:2px solid var(--gold-soft);
+    outline-offset:1px;
+    border-color:var(--gold-soft);
+  }
+  .field input:invalid:not(:placeholder-shown), .field textarea:invalid:not(:placeholder-shown){
+    border-color:var(--ember);
+  }
+  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .field-optional{color:var(--sage); font-weight:400; text-transform:none; letter-spacing:0; font-size:0.68rem;}
+  .form-panel .btn{width:100%; justify-content:center; margin-top:6px; position:relative;}
+  .form-panel .btn[disabled]{opacity:0.7; cursor:not-allowed;}
+  .btn-spinner{
+    display:none;
+    width:16px; height:16px;
+    border:2px solid rgba(18,19,31,0.3);
+    border-top-color:var(--ink);
+    border-radius:50%;
+    animation:spin 0.7s linear infinite;
+  }
+  .btn[data-loading="true"] .btn-spinner{display:inline-block;}
+  .btn[data-loading="true"] .btn-label{display:none;}
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+
+  .quote-success{
+    display:none;
+    text-align:center;
+    padding:20px 4px;
+    animation:fadeIn .4s ease;
+  }
+  .quote-success.visible{display:block;}
+  @keyframes fadeIn{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+  .quote-success svg{width:44px; height:44px; color:var(--gold); margin-bottom:18px;}
+  .quote-success h3{font-family:'Fraunces', serif; font-size:1.5rem; color:var(--parchment); margin-bottom:12px; font-weight:600;}
+  .quote-success p{color:var(--parchment-dim); font-size:0.95rem; line-height:1.6; max-width:40ch; margin:0 auto 24px;}
+  .form-note{font-size:0.72rem; color:var(--sage); margin-top:14px; text-align:center;}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:56px 0 40px;}
+  .footer-top{
+    display:flex; justify-content:space-between; align-items:flex-start;
+    flex-wrap:wrap; gap:30px;
+    padding-bottom:36px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:26px;
+  }
+  .footer-brand p{color:var(--sage); font-size:0.85rem; max-width:32ch; margin-top:12px;}
+  .footer-links{display:flex; gap:50px; flex-wrap:wrap;}
+  .footer-col h4{font-size:0.68rem; color:var(--sage); margin-bottom:14px;}
+  .footer-col a{display:block; font-size:0.86rem; color:var(--parchment-dim); margin-bottom:10px;}
+  .footer-col a:hover{color:var(--gold-soft);}
+  .footer-bottom{display:flex; justify-content:space-between; font-size:0.75rem; color:var(--sage); flex-wrap:wrap; gap:10px;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px){
+    .nav-links, .nav-cta{display:none;}
+    .burger{display:block;}
+    .diag-grid{grid-template-columns:1fr;}
+    .pillar-grid{grid-template-columns:1fr;}
+    .belief-grid{grid-template-columns:1fr;}
+    .industries-grid{grid-template-columns:repeat(3, 1fr);}
+    .services-grid{grid-template-columns:1fr 1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .pulse-labels{grid-template-columns:repeat(2,1fr); row-gap:14px;}
+    .approach-item{grid-template-columns:1fr; gap:8px;}
+  }
+  @media (max-width: 560px){
+    .wrap{padding:0 20px;}
+    .services-grid{grid-template-columns:1fr;}
+    .industries-grid{grid-template-columns:repeat(2, 1fr);}
+    .newsletter-box{flex-direction:column; align-items:flex-start; text-align:left;}
+    .newsletter-form{width:100%;}
+    .newsletter-form input{flex:1; min-width:0;}
+    .field-row{grid-template-columns:1fr;}
+    section{padding:64px 0;}
+    .hero{padding-top:48px;}
+  }
+
+  :focus-visible{outline:2px solid var(--gold-soft); outline-offset:2px;}
+
+  .whatsapp-float{
+    position:fixed;
+    bottom:24px;
+    right:24px;
+    width:56px;
+    height:56px;
+    border-radius:50%;
+    background:#25D366;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 4px 16px rgba(0,0,0,0.35);
+    z-index:60;
+    transition:transform .2s ease;
+  }
+  .whatsapp-float:hover{transform:scale(1.08);}
+  .whatsapp-float svg{width:28px; height:28px; color:#fff;}
+  @media (max-width:560px){
+    .whatsapp-float{width:50px; height:50px; bottom:18px; right:18px;}
+    .whatsapp-float svg{width:25px; height:25px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="brand">
+        <svg viewBox="0 0 24 24" fill="#c89b3c" stroke="none"><path d="M4 18 L7 8 L10 13 L12 5 L14 13 L17 8 L20 18 Z"/></svg>
+        <span>CROWN TECH AFRICA<span class="sub">Built on Strategy. Crowned by Results.</span></span>
+      </div>
+      <div class="nav-links">
+        <a href="#diagnosis">The Problem</a>
+        <a href="#approach">Approach</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#industries">Industries</a>
+        <a href="#works">Our Work</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-cta">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode">
+          <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+        </button>
+        <a href="#contact" class="btn btn-gold">Get a Free Quote</a>
+      </div>
+      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow mono">Growth Diagnosis &amp; Delivery</div>
+    <h1>Your business isn't broken.<br>It's <em>unseen</em>.</h1>
+    <p class="hero-sub">Good products stall in Africa's markets for reasons that are rarely about the product — visibility, positioning, or systems that never scaled past the founder. We find the exact leak point and fix it, using AI to move at a speed traditional agencies can't match.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-gold">Get Your Growth Diagnosis</a>
+      <a href="#approach" class="btn btn-ghost">See How It Works</a>
+    </div>
+
+    <div class="pulse-panel">
+      <div class="pulse-head mono">
+        <span>Business Signal Readout</span>
+        <span>Live Diagnostic</span>
+      </div>
+      <svg class="pulse-svg" viewBox="0 0 1000 160" preserveAspectRatio="none">
+        <line x1="0" y1="80" x2="1000" y2="80" stroke="#2a2c40" stroke-width="1"/>
+        <path class="pulse-line" d="M0,80 L120,80 L150,30 L180,130 L210,80 L340,80 L370,50 L400,110 L430,80 L560,80 L590,20 L620,140 L650,80 L780,80 L810,60 L840,100 L870,80 L1000,80"/>
+        <circle class="pulse-dot" cx="180" cy="130" r="5"/>
+        <circle class="pulse-dot" cx="400" cy="110" r="5"/>
+        <circle class="pulse-dot" cx="620" cy="140" r="5"/>
+        <circle class="pulse-dot" cx="840" cy="100" r="5"/>
+      </svg>
+      <div class="pulse-labels mono">
+        <div>01 · Visibility<strong>Nobody's finding you</strong></div>
+        <div>02 · Growth<strong>Stuck on a plateau</strong></div>
+        <div>03 · Sales<strong>Sudden, unexplained drop</strong></div>
+        <div>04 · Scale<strong>Can't grow past yourself</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="diagnosis">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Four questions we hear<br>from founders every week</h2>
+      <p>If any of these sound familiar, the problem has a name — and a fix.</p>
+    </div>
+    <div class="diag-grid">
+      <div class="diag-card">
+        <div class="diag-tag mono">Visibility</div>
+        <h3>Why is your business not growing?</h3>
+        <p>Your audience exists. They're just never shown you — the wrong channels, weak targeting, or a brand that doesn't hold attention long enough to convert.</p>
+        <div class="diag-fix">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg>
+          We rebuild the channels and targeting so the right people see you first.
+        </div>
+      </div>
+      <div class="diag-card">
+        <div class="diag-tag mono">Growth</div>
+        <h3>Why aren't you getting visibility?</h3>
+        <p>Posting isn't a strategy. Most businesses are active online without ever being positioned — no clear story, no consistent presence where buyers actually decide.</p>
+        <div class="diag-fix">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg>
+          We build a brand and content system that compounds instead of resetting weekly.
+        </div>
+      </div>
+      <div class="diag-card">
+        <div class="diag-tag mono">Sales</div>
+        <h3>Why has sales suddenly dropped?</h3>
+        <p>Sudden drops are rarely sudden — they're a slow leak that finally surfaced: a broken funnel step, a shifted market, or spend that stopped earning its keep.</p>
+        <div class="diag-fix">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg>
+          We audit the funnel end-to-end and patch the exact point of loss.
+        </div>
+      </div>
+      <div class="diag-card">
+        <div class="diag-tag mono">Scale</div>
+        <h3>How do you scale?</h3>
+        <p>What got you to your first milestone won't get you past it. Scaling needs systems, reporting, and marketing that run without you personally driving every sale.</p>
+        <div class="diag-fix">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg>
+          We put growth infrastructure in place that outlasts any one campaign.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="approach">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>How we work</h2>
+      <p>Three stages, in order — every engagement moves through all three.</p>
+    </div>
+    <div class="approach-list">
+      <div class="approach-item">
+        <div class="approach-num">01</div>
+        <div>
+          <h3>Diagnose</h3>
+          <p>We audit your brand, ads, website, and socials together — using AI-assisted analysis to find the exact point where prospects are dropping off, rather than guessing which channel to fix.</p>
+        </div>
+      </div>
+      <div class="approach-item">
+        <div class="approach-num">02</div>
+        <div>
+          <h3>Deploy</h3>
+          <p>We build and launch the fix — ads, website, content, brand system — at a pace manual agencies can't match, because AI handles the production work while our strategists handle judgment.</p>
+        </div>
+      </div>
+      <div class="approach-item">
+        <div class="approach-num">03</div>
+        <div>
+          <h3>Scale</h3>
+          <p>We put reporting and repeatable systems in place so growth keeps compounding after launch — and doesn't require you to personally run it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>About Crown Tech Africa</h2>
+      <p>Why we exist, and what we actually believe.</p>
+    </div>
+
+    <p class="about-intro">At Crown Tech Africa, we believe businesses don't struggle because they lack potential — they struggle because growth is often limited by <strong>poor visibility, ineffective strategies, disconnected systems, and missed opportunities.</strong> We exist to identify those challenges and turn them into measurable business growth.</p>
+
+    <p class="about-intro">Using intelligent strategy, branding, digital marketing, websites, AI-powered solutions, and practical execution, we help African businesses attract the right customers, improve their sales processes, strengthen their market presence, and build systems that scale.</p>
+
+    <p class="about-intro">We don't believe in offering services for the sake of it. Every strategy we recommend, every website we build, every campaign we launch, and every system we implement is designed with one purpose: <strong>to deliver measurable growth.</strong></p>
+
+    <p class="about-intro">At Crown Tech Africa, we don't just work for businesses — we become growth partners committed to helping them build stronger, smarter, and more profitable companies.</p>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="tag">Mission</div>
+        <p>To crown the efforts of African businesses with measurable growth through intelligent strategy and practical solutions.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="tag">Vision</div>
+        <p>To become Africa's most trusted growth consultancy — empowering businesses with innovative strategies, technology, and intelligent systems that create lasting impact across the continent.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="tag">Our Promise</div>
+        <p>We don't measure success by the number of websites we launch or campaigns we run. We measure success by the growth our clients achieve.</p>
+      </div>
+    </div>
+
+    <div class="section-head" style="border-top:none; padding-top:0;">
+      <h2>We Believe</h2>
+      <p>The philosophy behind how we work.</p>
+    </div>
+    <div class="belief-grid">
+      <div class="belief-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg>
+        <p>Businesses deserve strategies that produce results — not just reports.</p>
+      </div>
+      <div class="belief-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg>
+        <p>Visibility without conversion is wasted attention.</p>
+      </div>
+      <div class="belief-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg>
+        <p>Growth should be measurable.</p>
+      </div>
+      <div class="belief-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg>
+        <p>Technology should simplify business, not complicate it.</p>
+      </div>
+      <div class="belief-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg>
+        <p>AI should empower people, not replace them.</p>
+      </div>
+      <div class="belief-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg>
+        <p>Every business has untapped potential waiting to be unlocked.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>What we deliver</h2>
+      <p>Pick one problem to solve, or hand us the whole growth stack.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>
+        <h3>Ads</h3>
+        <p>Targeted campaigns built on real audience data, not guesswork — tuned weekly, not left to run cold.</p>
+      </div>
+      <div class="service-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M8 4v5"/></svg>
+        <h3>Websites</h3>
+        <p>Fast, mobile-first sites built to convert visits into calls, orders, and bookings — not just to look good.</p>
+      </div>
+      <div class="service-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="10" r="1.4"/><path d="M8 16c1-2 3-2 4-2s3 0 4 2"/></svg>
+        <h3>Social Media Management</h3>
+        <p>Consistent posting, tuned to what your specific audience responds to — planned monthly, not improvised daily.</p>
+      </div>
+      <div class="service-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
+        <h3>Sales &amp; Marketing</h3>
+        <p>Funnels and follow-up systems that turn interest into paid customers, and track exactly where deals are lost.</p>
+      </div>
+      <div class="service-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l2.4 5.3L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.6-.7z"/></svg>
+        <h3>Creative Brand Strategy</h3>
+        <p>A visual identity and message that make you instantly recognizable — and easy to say yes to.</p>
+      </div>
+      <div class="service-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+        <h3>Growth Reporting</h3>
+        <p>Clear, plain-language reporting on what's working — so decisions are made on numbers, not vibes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="industries">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Who We Help</h2>
+      <p>If you're one of these, this is built for you.</p>
+    </div>
+    <div class="industries-grid">
+      <div class="industry-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v6M9 5h6"/><rect x="4" y="9" width="16" height="12" rx="1"/><path d="M9 21v-4h6v4"/></svg>
+        <span>Clinics</span>
+      </div>
+      <div class="industry-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 8h2M14 8h2M8 12h2M14 12h2M9 21v-4h6v4"/></svg>
+        <span>Hotels</span>
+      </div>
+      <div class="industry-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg>
+        <span>Construction</span>
+      </div>
+      <div class="industry-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>
+        <span>Real Estate</span>
+      </div>
+      <div class="industry-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 8h16M6 8v13h12V8M9 4h6l1 4H8z"/></svg>
+        <span>Restaurants</span>
+      </div>
+      <div class="industry-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 8l1-4h14l1 4M4 8h16v12H4z"/><path d="M9 12a3 3 0 0 0 6 0"/></svg>
+        <span>Retail</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="works">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Our Work</h2>
+      <p>Real projects, shown honestly as they're completed.</p>
+    </div>
+    <div class="filter-tabs">
+      <button class="filter-tab active">All Work</button>
+      <button class="filter-tab">Branding</button>
+      <button class="filter-tab">Websites</button>
+      <button class="filter-tab">Marketing</button>
+    </div>
+    <div class="works-empty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg>
+      <h3>We're onboarding our first clients right now</h3>
+      <p>Real case studies — with real numbers — will show up here as projects wrap. We'd rather show you nothing than show you something we made up.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <div class="eyebrow mono">Start Here</div>
+        <h2>Get a Free Quote</h2>
+        <p>Tell us about your project and we'll prepare a tailored quotation based on your business goals and requirements.</p>
+        <p>Prefer to talk directly? Reach us below.</p>
+        <div class="contact-links">
+          <a href="https://wa.me/2348143482595" target="_blank" rel="noopener" class="contact-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.35 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.6 0-3.1-.44-4.38-1.2l-.31-.19-3.15.83.84-3.07-.2-.32A7.94 7.94 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.3-5.98c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.31-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41-.14-.01-.3-.01-.46-.01-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.1.16 1.52.1.46-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>
+            <span>WhatsApp — +234 814 348 2595</span>
+          </a>
+          <a href="tel:+2348161574228" class="contact-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>Call — +234 816 157 4228</span>
+          </a>
+          <a href="mailto:hello@crowntechafrica.com" class="contact-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            <span>hello@crowntechafrica.com</span>
+          </a>
+        </div>
+        <div class="hours-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <span>Mon – Fri, 9am – 6pm WAT · we usually reply same day</span>
+        </div>
+      </div>
+      <div class="form-panel">
+        <form id="quoteForm" name="quote-request" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="quote-request">
+          <p style="display:none;">
+            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+          </p>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="q-name" class="mono">Full Name</label>
+              <input id="q-name" name="name" type="text" placeholder="John Doe" required>
+            </div>
+            <div class="field">
+              <label for="q-email" class="mono">Email Address</label>
+              <input id="q-email" name="email" type="email" placeholder="john@example.com" required>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="q-business" class="mono">Business Name</label>
+              <input id="q-business" name="business" type="text" placeholder="ABC Technologies Ltd" required>
+            </div>
+            <div class="field">
+              <label for="q-phone" class="mono">Phone Number <span class="field-optional">(optional)</span></label>
+              <input id="q-phone" name="phone" type="tel" placeholder="+234 XXX XXX XXXX">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="q-service" class="mono">Service of Interest</label>
+            <select id="q-service" name="service" required>
+              <option value="">Select a service</option>
+              <option>Brand Strategy</option>
+              <option>Brand Identity &amp; Design</option>
+              <option>Website Development</option>
+              <option>E-Commerce Development</option>
+              <option>Digital Marketing</option>
+              <option>Social Media Management</option>
+              <option>Search Engine Optimisation (SEO)</option>
+              <option>AI Business Automation</option>
+              <option>Business Consultation</option>
+              <option>CRM &amp; Workflow Automation</option>
+              <option>UI/UX Design</option>
+              <option>Custom Software Development</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="q-budget" class="mono">Project Budget <span class="field-optional">(recommended)</span></label>
+              <select id="q-budget" name="budget">
+                <option value="">Select a range</option>
+                <option>Under $500</option>
+                <option>$500 – $1,000</option>
+                <option>$1,000 – $3,000</option>
+                <option>$3,000 – $5,000</option>
+                <option>$5,000+</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="q-timeline" class="mono">Project Timeline <span class="field-optional">(recommended)</span></label>
+              <select id="q-timeline" name="timeline">
+                <option value="">Select a timeline</option>
+                <option>ASAP</option>
+                <option>Within 2 Weeks</option>
+                <option>Within 1 Month</option>
+                <option>1–3 Months</option>
+                <option>Flexible</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="q-message" class="mono">How Can We Help You?</label>
+            <textarea id="q-message" name="message" rows="7" placeholder="Tell us about your business, the challenges you're facing, and what you'd like us to help you achieve." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-gold" id="quoteSubmitBtn">
+            <span class="btn-spinner"></span>
+            <span class="btn-label">Get My Free Quote</span>
+          </button>
+        </form>
+
+        <div class="quote-success" id="quoteSuccess">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
+          <h3>Thank You!</h3>
+          <p>We've received your enquiry. A member of the Crown Tech Africa team will review your requirements and send a tailored quotation to your email within 24–48 hours. In the meantime, feel free to explore our latest insights and services.</p>
+          <button class="btn btn-ghost" id="quoteReturnBtn" type="button">Return to Homepage</button>
+        </div>
+
+        <p class="form-note">Your information is used only to prepare your quotation and is never shared with third parties.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter">
+  <div class="wrap">
+    <div class="newsletter-box">
+      <div>
+        <h2>Growth ideas, not spam.</h2>
+        <p>One short email a month — practical ideas on visibility, sales systems, and scaling in African markets. No noise.</p>
+      </div>
+      <form id="newsletterForm" class="newsletter-form">
+        <input type="email" id="newsletterEmail" placeholder="you@business.com" required>
+        <button type="submit" class="btn btn-gold">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand">
+          <svg viewBox="0 0 24 24" fill="#c89b3c" stroke="none"><path d="M4 18 L7 8 L10 13 L12 5 L14 13 L17 8 L20 18 Z"/></svg>
+          <span>CROWN TECH AFRICA</span>
+        </div>
+        <p>Growth diagnosis and delivery for African businesses ready to scale past where they are now.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4 class="mono">Company</h4>
+          <a href="#diagnosis">The Problem</a>
+          <a href="#approach">Approach</a>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+        </div>
+        <div class="footer-col">
+          <h4 class="mono">Contact</h4>
+          <a href="mailto:hello@crowntechafrica.com">hello@crowntechafrica.com</a>
+          <a href="#contact">Get a Free Quote</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Crown Tech Africa. All rights reserved.</span>
+      <span>Built for founders, not for algorithms.</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/2348143482595" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.35 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.6 0-3.1-.44-4.38-1.2l-.31-.19-3.15.83.84-3.07-.2-.32A7.94 7.94 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.3-5.98c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.31-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41-.14-.01-.3-.01-.46-.01-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.1.16 1.52.1.46-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>
+</a>
+
+<script>
+  // Mobile menu toggle
+  const burger = document.querySelector('.burger');
+  const navLinks = document.querySelector('.nav-links');
+  const navCta = document.querySelector('.nav-cta');
+  burger.addEventListener('click', () => {
+    const open = navLinks.style.display === 'flex';
+    navLinks.style.display = open ? 'none' : 'flex';
+    navCta.style.display = open ? 'none' : 'flex';
+    navLinks.style.flexDirection = 'column';
+    navLinks.style.position = 'absolute';
+    navLinks.style.top = '64px';
+    navLinks.style.left = '0';
+    navLinks.style.right = '0';
+    navLinks.style.background = 'var(--ink)';
+    navLinks.style.padding = '20px 32px';
+    navLinks.style.borderBottom = '1px solid var(--line)';
+    navCta.style.position = 'absolute';
+    navCta.style.top = navLinks.style.display === 'flex' ? '210px' : '0';
+    navCta.style.left = '32px';
+  });
+
+  // Contact form — placeholder handler (no backend wired up yet)
+  // Get a Free Quote form — real Netlify Forms submission
+  const quoteForm = document.getElementById('quoteForm');
+  const quoteSubmitBtn = document.getElementById('quoteSubmitBtn');
+  const quoteSuccess = document.getElementById('quoteSuccess');
+  const quoteReturnBtn = document.getElementById('quoteReturnBtn');
+
+  function encodeFormData(form){
+    return new URLSearchParams(new FormData(form)).toString();
+  }
+
+  quoteForm.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    if(!quoteForm.checkValidity()){
+      quoteForm.reportValidity();
+      return;
+    }
+
+    quoteSubmitBtn.setAttribute('data-loading', 'true');
+    quoteSubmitBtn.disabled = true;
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encodeFormData(quoteForm)
+    })
+      .then(() => {
+        quoteForm.style.display = 'none';
+        quoteSuccess.classList.add('visible');
+        quoteForm.reset();
+      })
+      .catch(() => {
+        alert("Something went wrong sending your request — please try again, or reach us directly on WhatsApp or email.");
+      })
+      .finally(() => {
+        quoteSubmitBtn.removeAttribute('data-loading');
+        quoteSubmitBtn.disabled = false;
+      });
+  });
+
+  quoteReturnBtn.addEventListener('click', function(){
+    quoteSuccess.classList.remove('visible');
+    quoteForm.style.display = '';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Newsletter signup — placeholder handler (no mailing-list service connected yet)
+  document.getElementById('newsletterForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const email = document.getElementById('newsletterEmail').value;
+    const subject = encodeURIComponent('Newsletter Signup');
+    const body = encodeURIComponent('Please add this email to the growth insights list: ' + email);
+    window.location.href = 'mailto:hello@crowntechafrica.com?subject=' + subject + '&body=' + body;
+  });
+
+  // Light / dark mode toggle
+  const sunIcon = '<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>';
+  const moonIcon = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>';
+
+  function safeGet(key){
+    try { return localStorage.getItem(key); } catch(e){ return null; }
+  }
+  function safeSet(key, value){
+    try { localStorage.setItem(key, value); } catch(e){ /* storage unavailable, ignore */ }
+  }
+
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+
+  function applyTheme(isLight){
+    document.body.classList.toggle('light-mode', isLight);
+    // icon shows the mode you'll switch TO
+    themeIcon.innerHTML = isLight ? moonIcon : sunIcon;
+  }
+
+  const savedTheme = safeGet('crownTechTheme');
+  applyTheme(savedTheme === 'light');
+
+  themeToggle.addEventListener('click', () => {
+    const nowLight = !document.body.classList.contains('light-mode');
+    applyTheme(nowLight);
+    safeSet('crownTechTheme', nowLight ? 'light' : 'dark');
+  });
+
+  // Works filter tabs — visual state only until real projects exist
+  document.querySelectorAll('.filter-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
