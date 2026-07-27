@@ -5,24 +5,10 @@
 
 // Mobile menu toggle
 const burger = document.querySelector('.burger');
-const navLinks = document.querySelector('.nav-links');
-const navCta = document.querySelector('.nav-cta');
-if (burger && navLinks && navCta) {
+const navMenu = document.querySelector('.nav-menu');
+if (burger && navMenu) {
   burger.addEventListener('click', () => {
-    const open = navLinks.style.display === 'flex';
-    navLinks.style.display = open ? 'none' : 'flex';
-    navCta.style.display = open ? 'none' : 'flex';
-    navLinks.style.flexDirection = 'column';
-    navLinks.style.position = 'absolute';
-    navLinks.style.top = '64px';
-    navLinks.style.left = '0';
-    navLinks.style.right = '0';
-    navLinks.style.background = 'var(--ink)';
-    navLinks.style.padding = '20px 32px';
-    navLinks.style.borderBottom = '1px solid var(--line)';
-    navCta.style.position = 'absolute';
-    navCta.style.top = navLinks.style.display === 'flex' ? '210px' : '0';
-    navCta.style.left = '32px';
+    navMenu.classList.toggle('open');
   });
 }
 
