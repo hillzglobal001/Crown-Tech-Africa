@@ -585,7 +585,6 @@
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 860px){
-  @media (max-width: 860px){
     .nav-menu{
       display:none;
       position:absolute;
@@ -625,6 +624,7 @@
     .pulse-labels{grid-template-columns:repeat(2,1fr); row-gap:14px;}
     .approach-item{grid-template-columns:1fr; gap:8px;}
   }
+
   @media (max-width: 560px){
     .wrap{padding:0 20px;}
     .services-grid{grid-template-columns:1fr;}
@@ -635,6 +635,8 @@
     .field-row{grid-template-columns:1fr;}
     section{padding:64px 0;}
     .hero{padding-top:48px;}
+    .whatsapp-float{width:50px; height:50px; bottom:18px; right:18px;}
+    .whatsapp-float svg{width:25px; height:25px;}
   }
 
   :focus-visible{outline:2px solid var(--gold-soft); outline-offset:2px;}
@@ -656,7 +658,3 @@
   }
   .whatsapp-float:hover{transform:scale(1.08);}
   .whatsapp-float svg{width:28px; height:28px; color:#fff;}
-  @media (max-width:560px){
-    .whatsapp-float{width:50px; height:50px; bottom:18px; right:18px;}
-    .whatsapp-float svg{width:25px; height:25px;}
-  }
